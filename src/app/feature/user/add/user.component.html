@@ -19,10 +19,15 @@
 
         <div class="form-group">
           <label for="exampleInputOccupation">Occupation</label>
-          <input type="text" class="form-control" id="exampleInputOccupation"
-                 placeholder="Junior Software Engineer"  name="occupation" #occupation="ngModel" [(ngModel)]="user.occupation" required>
+
+          <select class="form-control" id="Occupation"  name="occupation"  #occupation="ngModel" [(ngModel)]="user.occupation" required>
+            <option *ngFor="let ocp of occupations" [value]="ocp">{{ocp.occupationName}}</option>
+          </select>
+
           <label for="ErrorInputOccupation" [hidden]="!(occupation.touched && !occupation.valid)" class="error-danger">Occupation is not valid</label>
         </div>
+
+
 
         <div class="form-group">
           <label for="exampleInputJoiningDate">Joining</label>

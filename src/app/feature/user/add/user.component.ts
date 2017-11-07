@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserDTO} from "../../../dto/UserDTO";
 import {UserService} from "../../../service/user.service";
+import {Constants, Occupations} from "../../../shared/constants";
 
 @Component({
   selector: 'app-user',
@@ -10,6 +11,7 @@ import {UserService} from "../../../service/user.service";
 })
 export class UserAddComponent {
   @Input() user:UserDTO=new UserDTO();
+  occupations=Occupations;
   isNew=true;
 
   constructor(private router:Router, private userService:UserService) {
@@ -26,7 +28,6 @@ export class UserAddComponent {
 
   onSubmit() {
     console.log('UserAddComponent:OnSubmit');
-    console.log(this.user);
 
       console.log('validOnSubmit');
       let nUser = new UserDTO();
