@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-md-3 col-md-offset-4">
+  <div class="col-md-4 offset-md-4">
+    <div class="card" >
+      <div class="card-body">
+        <h4 class="card-title">Sign Up Form</h4>
     <form #signUpForm="ngForm">
       <div class="form-group">
         <label for="exampleInputUsername">Username Or Email</label>
@@ -25,6 +28,9 @@
       <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!signUpForm.valid">Sign Up</button>
       <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
     </form>
+  </div>
+</div>
+
   </div>
 </div>
 
