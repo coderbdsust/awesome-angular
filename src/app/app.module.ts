@@ -25,7 +25,7 @@ import { SignupComponent } from './feature/auth/signup/signup.component';
     SignupComponent
   ],
   imports: [
-    BrowserModule,Routing, FormsModule,HttpModule
+    BrowserModule, Routing, FormsModule,HttpModule
   ],
   providers: [BundleService,UserService,AuthService],
   bootstrap: [AppComponent]
