@@ -37,6 +37,8 @@ export class UserAddComponent {
       nUser.joiningDate = this.user.joiningDate;
       nUser.married = this.user.married;
 
+      console.log(nUser);
+
       if (!this.isNew) {
         console.log('UserAddComponent:Edit');
         this.userService.editUser(this.user, nUser);

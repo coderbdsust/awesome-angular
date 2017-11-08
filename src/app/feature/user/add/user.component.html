@@ -1,39 +1,38 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-2">
+
       <form #userForm="ngForm">
         <div class="form-group">
           <label for="exampleInputName">Your Name</label>
           <input type="text" class="form-control" id="exampleInputName"
                  aria-describedby="nameHelp" placeholder="Biswajit Debnath"
                  name="fullName" #fullName="ngModel" [(ngModel)]="user.fullName" required>
-          <label for="ErrorInputName" [hidden]="!(fullName.touched && !fullName.valid)" class="error-danger">Name is not valid</label>
+          <label for="errorInputName" [hidden]="!(fullName.touched && !fullName.valid)" class="error-danger">Name is not valid</label>
         </div>
 
         <div class="form-group">
           <label for="exampleInputAge">Age</label>
           <input type="text" class="form-control" id="exampleInputAge"
                  placeholder="25"  name="age" #age="ngModel" [(ngModel)]="user.age" required>
-          <label for="ErrorInputAge" [hidden]="!(age.touched && !age.valid)" class="error-danger">Age is not valid</label>
+          <label for="errorInputAge" [hidden]="!(age.touched && !age.valid)" class="error-danger">Age is not valid</label>
         </div>
 
 
         <div class="form-group">
-          <label for="exampleInputOccupation">Occupation</label>
+          <label for="exampleInputOccupation">Designation</label>
 
           <select class="form-control" id="Occupation"  name="occupation"  #occupation="ngModel" [(ngModel)]="user.occupation" required>
-            <option *ngFor="let ocp of occupations" [value]="ocp">{{ocp.occupationName}}</option>
+            <option [value]="undefined">Please select occupation</option>
+            <option *ngFor="let ocp of occupations" [value]="ocp.id">{{ocp.occupationName}}</option>
           </select>
 
-          <label for="ErrorInputOccupation" [hidden]="!(occupation.touched && !occupation.valid)" class="error-danger">Occupation is not valid</label>
+          <label for="errorInputOccupation" [hidden]="!(occupation.touched && !occupation.valid)" class="error-danger">Occupation is not valid</label>
         </div>
-
 
 
         <div class="form-group">
           <label for="exampleInputJoiningDate">Joining</label>
           <input type="text" class="form-control" id="exampleInputJoiningDate"
                  placeholder="03-12-2016"  name="joiningDate" #joiningDate="ngModel" [(ngModel)]="user.joiningDate" required>
-          <label for="ErrorInputDate" [hidden]="!(joiningDate.touched && !joiningDate.valid)" class="error-danger">Date pattern is not valid</label>
+          <label for="errorInputDate" [hidden]="!(joiningDate.touched && !joiningDate.valid)" class="error-danger">Date pattern is not valid</label>
         </div>
 
         <div class="form-check">
@@ -48,5 +47,6 @@
         <button type="submit" class="btn btn-primary"  *ngIf="!isNew" (click)="onDelete()">Delete</button>
         <button type="submit" class="btn btn-primary"  *ngIf="!isNew" (click)="onClear()">Clear</button>
       </form>
-  </div>
-</div>
+
+
+

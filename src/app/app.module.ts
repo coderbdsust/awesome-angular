@@ -10,6 +10,9 @@ import { UserListComponent } from './feature/user/userlist/userlist.component';
 import { BundleListComponent } from './feature/bundle/bundle-list/bundle-list.component';
 import {BundleService} from "./service/bundle.service";
 import {UserService} from "./service/user.service";
+import { LoginComponent } from './feature/auth/login/login.component';
+import {AuthService} from "./service/auth.service";
+import { SignupComponent } from './feature/auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,14 @@ import {UserService} from "./service/user.service";
     NavbarComponent,
     UserAddComponent,
     UserListComponent,
-    BundleListComponent
+    BundleListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,routing, FormsModule,HttpModule
   ],
-  providers: [BundleService,UserService],
+  providers: [BundleService,UserService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
