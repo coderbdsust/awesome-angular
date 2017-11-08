@@ -4,7 +4,7 @@ import {HttpModule} from "@angular/http";
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UserAddComponent } from './feature/user/add/user.component';
-import {routing} from "./app.routing";
+import {Routing} from "./app.routing";
 import { FormsModule} from "@angular/forms";
 import { UserListComponent } from './feature/user/userlist/userlist.component';
 import { BundleListComponent } from './feature/bundle/bundle-list/bundle-list.component';
@@ -25,7 +25,7 @@ import { SignupComponent } from './feature/auth/signup/signup.component';
     SignupComponent
   ],
   imports: [
-    BrowserModule,routing, FormsModule,HttpModule
+    BrowserModule,Routing, FormsModule,HttpModule
   ],
   providers: [BundleService,UserService,AuthService],
   bootstrap: [AppComponent]
