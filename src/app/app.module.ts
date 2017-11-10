@@ -13,6 +13,11 @@ import {UserService} from "./service/user.service";
 import { LoginComponent } from './feature/auth/login/login.component';
 import {AuthService} from "./service/auth.service";
 import { SignupComponent } from './feature/auth/signup/signup.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SidemenuComponent } from './shared/sidemenu/sidemenu.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { BodyComponent } from './shared/body/body.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { SignupComponent } from './feature/auth/signup/signup.component';
     UserListComponent,
     BundleListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent,
+    SidemenuComponent,
+    FooterComponent,
+    LayoutComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule, Routing, FormsModule,HttpModule
