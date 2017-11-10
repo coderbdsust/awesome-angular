@@ -6,15 +6,12 @@
 
   <div class="collapse navbar-collapse navabar-right" id="navbarSupportedContent">
     <ul class="navbar-nav  ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="isAuth()">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Bundles
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
           <a href="#" class="dropdown-item" routerLink="bundle/show">Coin Bundles</a>
           <a class="dropdown-item" href="#">Bundle Example 1</a>
           <div class="dropdown-divider"></div>
@@ -22,7 +19,7 @@
         </div>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="isAuth()">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           User List
         </a>
@@ -35,12 +32,12 @@
       </li>
 
 
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isAuth()">
         <a class="nav-link" routerLink="login">Login</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="logout">Logout</a>
+      <li class="nav-item" *ngIf="isAuth()">
+        <a class="nav-link" href="#" routerLink="logout" (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </div>

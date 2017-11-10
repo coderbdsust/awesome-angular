@@ -13,6 +13,8 @@ import {UserService} from "./service/user.service";
 import { LoginComponent } from './feature/auth/login/login.component';
 import {AuthService} from "./service/auth.service";
 import { SignupComponent } from './feature/auth/signup/signup.component';
+import {AuthGuard} from "./service/AuthGuard";
+
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { SignupComponent } from './feature/auth/signup/signup.component';
     SignupComponent
   ],
   imports: [
-    BrowserModule, Routing, FormsModule,HttpModule
+    BrowserModule, FormsModule, HttpModule,
+    Routing,
   ],
-  providers: [BundleService,UserService,AuthService],
+  providers: [AuthService, BundleService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

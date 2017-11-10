@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {SystemUserDTO} from "../../../dto/SystemUserDTO";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -7,10 +9,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Input() username:String;
-  @Input() password:String;
+  //biswa.dcc@gmail.com, code1234
+  @Input() loginUser:SystemUserDTO=new SystemUserDTO();
 
-  constructor(private router:Router) {
+
+  constructor(private router:Router, private authService:AuthService) {
     console.log('LoginComponent:Constructor');
   }
 
@@ -19,8 +22,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log('LoginComponent:onSubmit');
-    console.log(this.username);
-    console.log(this.password);
+    console.log(this.loginUser);
+    let sUser = new SystemUserDTO();
+    sUser.email=this.loginUser.email;
+    sUser.password=this.loginUser.password;
+    this.authService.signIn(sUser);
+    this.router.navigate(['/user/show']);
   }
 
   onCancel(){
