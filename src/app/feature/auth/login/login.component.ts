@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log('LoginComponent:ngOnInit');
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(['/user/show']);
+    }
   }
 
   onSubmit(){

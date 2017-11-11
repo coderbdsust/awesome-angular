@@ -24,6 +24,17 @@ export class AuthService {
 
   isAuthenticated(){
     console.log('AuthService:isAuthenticated');
+
+    if(this.isLoggedIn) return this.isLoggedIn;
+
+    var localUser=localStorage.getItem("loginUser");
+    if(localUser){
+      let usr = JSON.parse(localUser);
+      if(usr) {
+        this.isLoggedIn = true;
+        this.loginUser = usr.email;
+      }
+    }
     return this.isLoggedIn;
   }
 
@@ -31,9 +42,9 @@ export class AuthService {
     console.log('AuthService:saveLoginUser');
     var user = this.afAuth.auth.currentUser;
     if (user) {
-      console.log('save');
       this.isLoggedIn=true;
       this.loginUser=user.email;
+      localStorage.setItem("loginUser",JSON.stringify(user));
     } else {
       this.isLoggedIn=false;
     }
@@ -43,6 +54,7 @@ export class AuthService {
     console.log('AuthService:resetLoginUser');
     this.isLoggedIn=false;
     this.loginUser=null;
+    localStorage.removeItem("loginUser");
   }
 
   public logout(){
