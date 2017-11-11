@@ -17,10 +17,14 @@
               <input type="password" class="form-control" id="exampleInputPassword"  placeholder="Password"  name="password"
                      #password="ngModel" [(ngModel)]="loginUser.password" required>
               <label for="exampleInputPassword" [hidden]="!(password.touched && !password.valid)" class="error-danger">Password is not valid</label>
-              <label class="error-danger" *ngIf="error">{{message}}</label>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{message}}
+              </div>
             </div>
-
-
 
             <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!loginForm.valid">Login</button>
             <button type="submit" class="btn btn-primary" (click)="onSignUp()">Sign Up</button>

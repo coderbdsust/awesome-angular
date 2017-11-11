@@ -3,36 +3,36 @@
     <div class="card" >
       <div class="card-body">
         <h4 class="card-title">Sign Up Form</h4>
-    <form #signUpForm="ngForm">
-      <div class="form-group">
-        <label for="exampleInputUsername">Email</label>
+        <form #signUpForm="ngForm">
+          <div class="form-group">
+            <label for="exampleInputUsername">Email</label>
 
-        <input type="text" class="form-control" id="exampleInputUsername"
-               aria-describedby="nameHelp" placeholder="Username or Email"  name="email"
-               #email="ngModel" [(ngModel)]="systemUser.email" required>
+            <input type="text" class="form-control" id="exampleInputUsername"
+                   aria-describedby="nameHelp" placeholder="Username or Email"  name="email"
+                   #email="ngModel" [(ngModel)]="systemUser.email" required>
 
-        <label for="exampleInputUsername" [hidden]="!(email.touched && !email.valid)" class="error-danger">Email is not valid</label>
+            <label for="exampleInputUsername" [hidden]="!(email.touched && !email.valid)" class="error-danger">Email is not valid</label>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password"  name="password"
+                   #password="ngModel" [(ngModel)]="systemUser.password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputConfirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputConfirmPassword"
+                   placeholder="Password"  name="confirmPassword"
+                   #confirmPassword="ngModel" [(ngModel)]="systemUser.confirmPassword" required>
+            <label for="exampleInputConfirmPassword" [hidden]="!(confirmPassword.touched && !confirmPassword.valid)" class="error-danger">Password is not matched</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!signUpForm.valid">Sign Up</button>
+          <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+        </form>
       </div>
-
-      <div class="form-group">
-        <label for="exampleInputPassword">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password"  name="password"
-               #password="ngModel" [(ngModel)]="systemUser.password" required>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputConfirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="exampleInputConfirmPassword"
-               placeholder="Password"  name="confirmPassword"
-               #confirmPassword="ngModel" [(ngModel)]="systemUser.confirmPassword" required>
-        <label for="exampleInputConfirmPassword" [hidden]="!(confirmPassword.touched && !confirmPassword.valid)" class="error-danger">Password is not matched</label>
-      </div>
-
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!signUpForm.valid">Sign Up</button>
-      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
-    </form>
-  </div>
-</div>
+    </div>
 
   </div>
 </div>
