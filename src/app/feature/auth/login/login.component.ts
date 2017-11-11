@@ -11,7 +11,7 @@ import {AuthService} from "../../../service/auth.service";
 export class LoginComponent implements OnInit {
   //biswa.dcc@gmail.com, code1234
   @Input() loginUser:SystemUserDTO=new SystemUserDTO();
-  errorMessage:string;
+  message:string;
   error:boolean=false;
 
   constructor(private router:Router, private authService:AuthService) {
@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(sUser).then(res=>{
       this.authService.saveLoginUser();
       this.error=false;
-      this.errorMessage='';
+      this.message='';
       this.router.navigate(['/user/show']);
     }).catch((err)=>{
       console.log(err);
       this.error=true;
-      this.errorMessage='Email or password is wrong';
+      this.message='Email or password is wrong';
     });
   }
 

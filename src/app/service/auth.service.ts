@@ -54,4 +54,8 @@ export class AuthService {
     return this.loginUser;
   }
 
+  getAuthUsers(){
+
+  }
+
 }

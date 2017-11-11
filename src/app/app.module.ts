@@ -13,7 +13,7 @@ import {UserService} from "./service/user.service";
 import { LoginComponent } from './feature/auth/login/login.component';
 import {AuthService} from "./service/auth.service";
 import { SignupComponent } from './feature/auth/signup/signup.component';
-import {AuthGuard} from "./service/AuthGuard";
+import {AuthGuard} from "./service/auth.guard";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "angularfire2";
 import {AngularFirestoreModule} from "angularfire2/firestore";

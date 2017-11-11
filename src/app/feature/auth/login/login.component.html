@@ -17,7 +17,7 @@
               <input type="password" class="form-control" id="exampleInputPassword"  placeholder="Password"  name="password"
                      #password="ngModel" [(ngModel)]="loginUser.password" required>
               <label for="exampleInputPassword" [hidden]="!(password.touched && !password.valid)" class="error-danger">Password is not valid</label>
-              <label class="error-danger" *ngIf="error">{{errorMessage}}</label>
+              <label class="error-danger" *ngIf="error">{{message}}</label>
             </div>
 
 
