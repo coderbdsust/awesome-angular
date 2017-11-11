@@ -11,13 +11,15 @@ import {AuthService} from "../../../service/auth.service";
 export class LoginComponent implements OnInit {
   //biswa.dcc@gmail.com, code1234
   @Input() loginUser:SystemUserDTO=new SystemUserDTO();
-
+  errorMessage:string;
+  error:boolean=false;
 
   constructor(private router:Router, private authService:AuthService) {
     console.log('LoginComponent:Constructor');
   }
 
   ngOnInit() {
+    console.log('LoginComponent:ngOnInit');
   }
 
   onSubmit(){
@@ -26,8 +28,16 @@ export class LoginComponent implements OnInit {
     let sUser = new SystemUserDTO();
     sUser.email=this.loginUser.email;
     sUser.password=this.loginUser.password;
-    this.authService.signIn(sUser);
-    this.router.navigate(['/user/show']);
+    this.authService.signIn(sUser).then(res=>{
+      this.authService.saveLoginUser();
+      this.error=false;
+      this.errorMessage='';
+      this.router.navigate(['/user/show']);
+    }).catch((err)=>{
+      console.log(err);
+      this.error=true;
+      this.errorMessage='Email or password is wrong';
+    });
   }
 
   onCancel(){

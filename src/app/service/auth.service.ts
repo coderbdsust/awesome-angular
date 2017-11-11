@@ -1,57 +1,57 @@
 import { Injectable } from '@angular/core';
 import {SystemUserDTO} from "../dto/SystemUserDTO";
 import {Router} from "@angular/router";
-
-declare var firebase: any;
+import {AngularFireAuth} from "angularfire2/auth";
 
 @Injectable()
 export class AuthService {
+  private isLoggedIn=false;
+  private loginUser:any;
 
-  constructor(private router:Router) {
+  constructor(private router:Router, public afAuth: AngularFireAuth) {
     console.log('AuthService:construct');
   }
 
   signUp(systemUser:SystemUserDTO){
     console.log('AuthService:signUp');
-
-      firebase.auth().createUserWithEmailAndPassword(systemUser.email, systemUser.password)
-        .catch(function (error) {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log('insert error', error);
-        });
-
+    return this.afAuth.auth.createUserWithEmailAndPassword(systemUser.email, systemUser.password);
   }
 
   signIn(systemUser:SystemUserDTO){
     console.log('AuthService:signIn');
-
-      firebase.auth().signInWithEmailAndPassword(systemUser.email, systemUser.password)
-        .catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
-        });
+    return this.afAuth.auth.signInWithEmailAndPassword(systemUser.email,systemUser.password);
   }
 
   isAuthenticated(){
     console.log('AuthService:isAuthenticated');
-
-      var user = firebase.auth().currentUser;
-      if (user) {
-        return true;
-      } else {
-        return false;
-      }
-
+    return this.isLoggedIn;
   }
 
-   logout(){
+  saveLoginUser(){
+    console.log('AuthService:saveLoginUser');
+    var user = this.afAuth.auth.currentUser;
+    if (user) {
+      console.log('save');
+      this.isLoggedIn=true;
+      this.loginUser=user.email;
+    } else {
+      this.isLoggedIn=false;
+    }
+  }
 
-      firebase.auth().signOut();
-      this.router.navigate(['/login']);
+  resetLoginUser(){
+    console.log('AuthService:resetLoginUser');
+    this.isLoggedIn=false;
+    this.loginUser=null;
+  }
 
+  public logout(){
+    console.log('AuthService:logout');
+    return this.afAuth.auth.signOut();
+  }
+
+  public getLoginUser(){
+    return this.loginUser;
   }
 
 }

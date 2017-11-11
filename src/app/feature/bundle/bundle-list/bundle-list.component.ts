@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BundleService} from "../../../service/bundle.service";
 import {CoinBundleDTO} from "../../../dto/CoinBundleDTO";
 
@@ -7,13 +7,15 @@ import {CoinBundleDTO} from "../../../dto/CoinBundleDTO";
   templateUrl: './bundle-list.component.html',
   styleUrls: ['./bundle-list.component.css']
 })
-export class BundleListComponent implements OnInit {
+export class BundleListComponent implements OnInit,OnDestroy {
   coinBundles:any[]=[];
+  private subscribe:any;
   jsonCoinBundle;
 
   constructor(private bundleService:BundleService) { }
 
   ngOnInit() {
+    console.log('BundleListComponent:ngOnInit');
     this.getCoinBundles();
   }
 
@@ -21,10 +23,15 @@ export class BundleListComponent implements OnInit {
   }
 
   public getCoinBundles(){
-    this.bundleService.getAllCoinBundle().subscribe((data)=>{
+    this.subscribe=this.bundleService.getAllCoinBundle().subscribe((data)=>{
       if(data['sucs'])
         this.coinBundles=data['coinBundle'];
     });
+  }
+
+  ngOnDestroy(){
+    console.log('BundleListComponent:ngOnDestroy');
+    this.subscribe.unsubscribe();
   }
 
 }

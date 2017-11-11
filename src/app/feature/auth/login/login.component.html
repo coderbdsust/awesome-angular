@@ -2,7 +2,7 @@
   <div class="col-md-4 offset-md-4">
       <div class="card" >
         <div class="card-body">
-          <h4 class="card-title">User Info</h4>
+          <h4 class="card-title">HRM LOGIN</h4>
           <form #loginForm="ngForm">
             <div class="form-group">
               <label for="exampleInputUsername">Email</label>
@@ -17,7 +17,10 @@
               <input type="password" class="form-control" id="exampleInputPassword"  placeholder="Password"  name="password"
                      #password="ngModel" [(ngModel)]="loginUser.password" required>
               <label for="exampleInputPassword" [hidden]="!(password.touched && !password.valid)" class="error-danger">Password is not valid</label>
+              <label class="error-danger" *ngIf="error">{{errorMessage}}</label>
             </div>
+
+
 
             <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!loginForm.valid">Login</button>
             <button type="submit" class="btn btn-primary" (click)="onSignUp()">Sign Up</button>

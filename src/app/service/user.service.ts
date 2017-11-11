@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {UserDTO} from "../dto/UserDTO";
+import {AngularFireDatabase} from "angularfire2/database";
 
 @Injectable()
 export class UserService {
 
   private users:UserDTO[]=[];
 
-  constructor() { }
+  constructor(private afd:AngularFireDatabase) { }
 
   getUsers():UserDTO[]{
     return this.users;
@@ -17,7 +18,10 @@ export class UserService {
   }
 
   addUser(user:UserDTO){
-    this.users.push(user);
+    this.afd.database.ref('/users').push(user).then((val)=>{
+      this.users.push(user);
+    });
+
   }
 
   editUser(oldUser:UserDTO, newUser:UserDTO){

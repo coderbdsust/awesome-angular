@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import {AuthService} from "../../service/auth.service";
 })
 export class NavbarComponent implements OnInit {
   title='HRM-ANGULAR'
-  constructor(private authService:AuthService) { }
+  constructor(private router:Router, private authService:AuthService) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,16 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout(){
-    return this.authService.logout();
+    this.authService.logout().then((response)=>{
+      this.authService.resetLoginUser();
+      this.router.navigate(['/login']);
+    }).catch((err)=>{
+      console.log('logout error');
+    });
+
+  }
+
+  public getLoggedEmail(){
+    return this.authService.getLoginUser();
   }
 }

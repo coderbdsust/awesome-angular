@@ -14,6 +14,11 @@ import { LoginComponent } from './feature/auth/login/login.component';
 import {AuthService} from "./service/auth.service";
 import { SignupComponent } from './feature/auth/signup/signup.component';
 import {AuthGuard} from "./service/AuthGuard";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "angularfire2";
+import {AngularFirestoreModule} from "angularfire2/firestore";
+import {AngularFireAuthModule} from "angularfire2/auth";
+import {AngularFireDatabaseModule} from "angularfire2/database";
 
 
 @NgModule({
@@ -29,6 +34,7 @@ import {AuthGuard} from "./service/AuthGuard";
   imports: [
     BrowserModule, FormsModule, HttpModule,
     Routing,
+    AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, AngularFireAuthModule, AngularFireDatabaseModule
   ],
   providers: [AuthService, BundleService, UserService, AuthGuard],
   bootstrap: [AppComponent]
