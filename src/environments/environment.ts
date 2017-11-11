@@ -12,5 +12,6 @@ export const environment = {
     projectId: "awesome-angular",
     storageBucket: "awesome-angular.appspot.com",
     messagingSenderId: "615479082969"
-  }
+  },
+  COIN_API_SERVER:'http://devcoin.ringid.com:8077/'
 };

@@ -11,7 +11,6 @@ const APP_ROUTES:Routes=[
   {path:'signup', component: SignupComponent},
   {path:'user/show', component: UserListComponent, canActivate:[AuthGuard]},
   {path:'bundle/show', component: BundleListComponent, canActivate:[AuthGuard]},
-
 ]
 
 export const Routing=RouterModule.forRoot(APP_ROUTES);

@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserDTO} from "../../../dto/UserDTO";
 import {UserService} from "../../../service/user.service";
-import {Constants, Occupations} from "../../../shared/constants";
+import {Occupations} from "../../../shared/constants";
 
 @Component({
   selector: 'app-user',

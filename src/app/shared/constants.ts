@@ -1,9 +1,5 @@
 import { OccupationDTO} from "../dto/OccupationDTO";
 
-export const Constants={
-   COIN_API_SERVER:'http://devcoin.ringid.com:8077/',
-};
-
 export const Occupations:OccupationDTO[]=[
   new OccupationDTO(1,'Junior Software Engineer'),
   new OccupationDTO(2, 'Software Engineer'),
