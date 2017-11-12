@@ -5,39 +5,48 @@ import {AngularFireDatabase} from "angularfire2/database";
 @Injectable()
 export class UserService {
 
-  private users:UserDTO[]=[];
-
-  constructor(private afd:AngularFireDatabase) { }
-
-  getUsers():UserDTO[]{
-    return this.users;
+  constructor(private afd:AngularFireDatabase) {
+    console.log('UserService:constructor');
   }
 
-  addUsers(users:UserDTO[]){
-    Array.prototype.push.apply(this.users,users);
+  private collectionName='users';
+
+  getUsers(limit:number){
+    console.log('UserService:getUsers');
+    // this.afd.database.ref(this.collectionName).once('value',(dataSnapShot)=>{dataSnapShot}).then(
+    //   (snapshot)=>{
+    //     snapshot.forEach(data=>{var user=data.val();
+    //       console.log(user);
+    //       let usr:UserDTO=user;
+    //       console.log(usr);
+    //     });
+    //   }
+    // );
+    this.afd.database.ref(this.collectionName)
+
   }
 
   addUser(user:UserDTO){
-    this.afd.database.ref('/users').push(user).then((val)=>{
-      this.users.push(user);
-    });
-
+    console.log('UserService:addUser');
+    return this.afd.database.ref(this.collectionName).push(user);
   }
 
-  editUser(oldUser:UserDTO, newUser:UserDTO){
-    this.users[this.users.indexOf(oldUser)]=newUser;
+  editUser(user:UserDTO, nUser:UserDTO){
+    console.log('UserService:editUser');
+    let id='';
+    return this.afd.database.ref(this.collectionName+'/'+id).push(user);
   }
 
-  getUser(id:number){
-    return this.users[id];
+  getUser(id:string){
+    return this.afd.database.ref(this.collectionName);
   }
 
   deleteUserByIndex(idx:number){
-    this.users.splice(idx);
+    // this.users.splice(idx);
   }
 
   deleteUser(user:UserDTO){
-    this.users.splice(this.users.indexOf(user),1);
+    // this.users.splice(this.users.indexOf(user),1);
   }
 
 }

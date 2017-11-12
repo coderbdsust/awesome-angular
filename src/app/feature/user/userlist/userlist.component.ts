@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserDTO} from "../../../dto/UserDTO";
 import {UserService} from "../../../service/user.service";
+import {AngularFireDatabase} from "angularfire2/database";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-userlist',
@@ -11,11 +13,12 @@ export class UserListComponent implements OnInit {
 
   users:UserDTO[]=[];
   selectedUser:UserDTO=null;
+  public error=false;
+  public message='';
 
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    this.users=this.userService.getUsers();
   }
 
   onSeletedUser(user:UserDTO){
