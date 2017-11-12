@@ -18,10 +18,7 @@ export class UserService {
   }
 
   addUser(user:UserDTO){
-    this.afd.database.ref('/users').push(user).then((val)=>{
-      this.users.push(user);
-    });
-
+    this.users.push(user);
   }
 
   editUser(oldUser:UserDTO, newUser:UserDTO){
